@@ -1,20 +1,20 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
 
 function initializeCustomPostButton(api) {
-  // Get settings directly from the api
-  const settings = api.container.lookup("service:theme-settings").getObjectForTheme(api.getCurrentThemeId());
-  
+  // Use the global settings object provided by Discourse
+  const themeSettings = typeof settings !== "undefined" ? settings : {};
+
   // Default to "staff" if allowed_groups is undefined
-  const allowedGroups = settings.allowed_groups ? settings.allowed_groups.split("|") : ["staff"];
-  
+  const allowedGroups = themeSettings.allowed_groups ? themeSettings.allowed_groups.split("|") : ["staff"];
+
   // Add CSS variables for button styling
   const addButtonStyles = () => {
-    document.documentElement.style.setProperty('--button-bg-color', settings.button_default_color || "#0088cc");
-    document.documentElement.style.setProperty('--button-border-radius', settings.button_border_radius || "4px");
-    document.documentElement.style.setProperty('--button-padding', settings.button_padding || "8px 16px");
-    document.documentElement.style.setProperty('--button-font-weight', settings.button_font_weight || "bold");
-    document.documentElement.style.setProperty('--button-text-color', settings.button_text_color || "#ffffff");
-    document.documentElement.style.setProperty('--button-hover-opacity', settings.button_hover_opacity || "0.8");
+    document.documentElement.style.setProperty('--button-bg-color', themeSettings.button_default_color || "#0088cc");
+    document.documentElement.style.setProperty('--button-border-radius', themeSettings.button_border_radius || "4px");
+    document.documentElement.style.setProperty('--button-padding', themeSettings.button_padding || "8px 16px");
+    document.documentElement.style.setProperty('--button-font-weight', themeSettings.button_font_weight || "bold");
+    document.documentElement.style.setProperty('--button-text-color', themeSettings.button_text_color || "#ffffff");
+    document.documentElement.style.setProperty('--button-hover-opacity', themeSettings.button_hover_opacity || "0.8");
   };
 
   // Apply styles when the page loads
