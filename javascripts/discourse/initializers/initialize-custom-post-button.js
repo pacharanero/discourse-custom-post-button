@@ -44,8 +44,18 @@ function initializeCustomPostButton(api) {
         return;
       }
 
+      // Ensure cooked is a DOM element
+      let cookedElement = cooked;
+      if (window.jQuery && cooked instanceof window.jQuery) {
+        cookedElement = cooked[0];
+      } else if (Array.isArray(cooked)) {
+        cookedElement = cooked[0];
+      }
+      if (!cookedElement || !cookedElement.querySelectorAll) {
+        return;
+      }
       // Find all custom button wraps
-      const customButtons = cooked.querySelectorAll('[data-wrap="custom-button"]');
+      const customButtons = cookedElement.querySelectorAll('[data-wrap="custom-button"]');
       
       customButtons.forEach(buttonWrap => {
         const link = buttonWrap.querySelector("a");

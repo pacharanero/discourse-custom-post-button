@@ -15,7 +15,7 @@ A theme component for Discourse that adds customizable buttons to topics and pos
 1. Go to your Discourse admin panel
 2. Navigate to Customize > Themes
 3. Click "Install" and select "From a git repository"
-4. Enter the repository URL: `https://github.com/manus/discourse-custom-post-button.git`
+4. Enter the repository URL: https://github.com/pacharanero/discourse-custom-post-button
 5. Click "Install"
 
 ## Usage
