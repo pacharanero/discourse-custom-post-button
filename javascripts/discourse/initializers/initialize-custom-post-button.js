@@ -56,19 +56,24 @@ function initializeCustomPostButton(api) {
       }
       // Find all custom button wraps
       const customButtons = cookedElement.querySelectorAll('[data-wrap="custom-button"]');
-      
       customButtons.forEach(buttonWrap => {
+        // Unwrap <a> from <p> if present
+        const p = buttonWrap.querySelector("p");
+        if (p && p.children.length === 1 && p.firstElementChild.tagName === "A") {
+          const link = p.firstElementChild;
+          // Move the <a> out of the <p>
+          buttonWrap.insertBefore(link, p);
+          p.remove();
+        }
+        // Add custom class to the link (in case it wasn't already)
         const link = buttonWrap.querySelector("a");
         if (link) {
-          // Add custom class to the link
           link.classList.add("custom-post-button");
-          
           // Check for color parameter in the wrap
           const wrapperDiv = buttonWrap.closest("div");
           if (wrapperDiv && wrapperDiv.dataset.params) {
             const params = wrapperDiv.dataset.params;
             const colorMatch = params.match(/color=([^,\s]+)/);
-            
             if (colorMatch && colorMatch[1]) {
               const color = colorMatch[1];
               link.style.backgroundColor = color;
