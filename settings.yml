@@ -1,0 +1,41 @@
+allowed_groups:
+  type: list
+  default: "staff"
+  description: "Groups that are allowed to use the custom post button"
+  list_type: "compact"
+
+button_default_color:
+  type: string
+  default: "#0088cc"
+  description: "Default color for buttons when no color is specified"
+
+button_border_radius:
+  type: string
+  default: "4px"
+  description: "Border radius for all buttons"
+
+button_padding:
+  type: string
+  default: "8px 16px"
+  description: "Padding for all buttons (format: top/bottom left/right)"
+
+button_font_weight:
+  type: string
+  default: "bold"
+  description: "Font weight for button text"
+
+button_text_color:
+  type: string
+  default: "#ffffff"
+  description: "Default text color for buttons"
+
+button_hover_opacity:
+  type: string
+  default: "0.8"
+  description: "Opacity for button hover state (0-1)"
+
+svg_icons:
+  default: "far-arrow-right|far-external-link|far-download|far-envelope|far-check-circle"
+  type: "list"
+  list_type: "compact"
+  description: "SVG icons that can be used with buttons"

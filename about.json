@@ -1,0 +1,13 @@
+{
+  "name": "Discourse Custom Post Button",
+  "component": true,
+  "authors": "Manus",
+  "about_url": "https://github.com/manus/discourse-custom-post-button",
+  "license_url": "https://github.com/manus/discourse-custom-post-button/blob/main/LICENSE",
+  "theme_version": "0.0.1",
+  "minimum_discourse_version": null,
+  "maximum_discourse_version": null,
+  "assets": {},
+  "color_schemes": {},
+  "modifiers": {}
+}

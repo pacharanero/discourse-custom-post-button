@@ -1,0 +1,34 @@
+/* Custom Post Button Styles */
+.custom-post-button {
+  display: inline-block;
+  font-weight: var(--button-font-weight);
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: var(--button-padding);
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: var(--button-border-radius);
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  color: var(--button-text-color) !important;
+  background-color: var(--button-bg-color);
+  border-color: var(--button-bg-color);
+  text-decoration: none;
+}
+
+.custom-post-button:hover {
+  opacity: var(--button-hover-opacity);
+  text-decoration: none;
+}
+
+/* Allow text to be displayed next to button */
+[data-wrap="custom-button"] {
+  display: inline-block;
+  margin-right: 0.5em;
+}
+
+[data-wrap="text-after-button"] {
+  display: inline-block;
+}
