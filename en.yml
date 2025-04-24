@@ -1,0 +1,19 @@
+en:
+  theme_metadata:
+    description: "A theme component that adds customizable buttons to topics and posts with color customization and group permission settings"
+  custom_post_button:
+    title: "Custom Post Button"
+    settings:
+      allowed_groups: "Groups allowed to use custom post buttons"
+      button_default_color: "Default button color"
+      button_border_radius: "Button border radius"
+      button_padding: "Button padding"
+      button_font_weight: "Button font weight"
+      button_text_color: "Button text color"
+      button_hover_opacity: "Button hover opacity"
+      svg_icons: "SVG icons available for buttons"
+    usage:
+      title: "Usage Instructions"
+      basic: "Basic button: [wrap=custom-button][Button Text](https://example.com)[/wrap]"
+      with_color: "Colored button: [wrap=custom-button color=#ff0000][Button Text](https://example.com)[/wrap]"
+      with_text: "Button with text: [wrap=custom-button][Button Text](https://example.com)[/wrap] [wrap=text-after-button]Additional text here[/wrap]"

@@ -1,19 +1,20 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
-import { getOwner } from "discourse-common/lib/get-owner";
 
 function initializeCustomPostButton(api) {
-  // Get settings from theme
-  const settings = api.container.lookup("service:site-settings").themeSettings;
-  const allowedGroups = (settings.allowed_groups || "").split("|");
+  // Get settings directly from the api
+  const settings = api.container.lookup("service:theme-settings").getObjectForTheme(api.getCurrentThemeId());
+  
+  // Default to "staff" if allowed_groups is undefined
+  const allowedGroups = settings.allowed_groups ? settings.allowed_groups.split("|") : ["staff"];
   
   // Add CSS variables for button styling
   const addButtonStyles = () => {
-    document.documentElement.style.setProperty('--button-bg-color', settings.button_default_color);
-    document.documentElement.style.setProperty('--button-border-radius', settings.button_border_radius);
-    document.documentElement.style.setProperty('--button-padding', settings.button_padding);
-    document.documentElement.style.setProperty('--button-font-weight', settings.button_font_weight);
-    document.documentElement.style.setProperty('--button-text-color', settings.button_text_color);
-    document.documentElement.style.setProperty('--button-hover-opacity', settings.button_hover_opacity);
+    document.documentElement.style.setProperty('--button-bg-color', settings.button_default_color || "#0088cc");
+    document.documentElement.style.setProperty('--button-border-radius', settings.button_border_radius || "4px");
+    document.documentElement.style.setProperty('--button-padding', settings.button_padding || "8px 16px");
+    document.documentElement.style.setProperty('--button-font-weight', settings.button_font_weight || "bold");
+    document.documentElement.style.setProperty('--button-text-color', settings.button_text_color || "#ffffff");
+    document.documentElement.style.setProperty('--button-hover-opacity', settings.button_hover_opacity || "0.8");
   };
 
   // Apply styles when the page loads
@@ -73,7 +74,7 @@ function initializeCustomPostButton(api) {
 
 export default {
   name: "discourse-custom-post-button",
-  initialize() {
+  initialize(container) {
     withPluginApi("0.8.31", initializeCustomPostButton);
   }
 };
